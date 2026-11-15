@@ -1,6 +1,7 @@
 # astrbot_plugin_llm_keyword_interceptor · LLM 调用关键词拦截
 
 [![AstrBot](https://img.shields.io/badge/AstrBot-%E2%89%A54.0-5B6CFF)](https://github.com/AstrBotDevs/AstrBot)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue)](metadata.yaml)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 消息命中关键词时，只掐断 AstrBot 默认的 LLM 调用，**不终止事件**。有人发「机器人闭嘴」，AI 不接话，其他插件照常工作。
@@ -11,6 +12,12 @@
 - 命中 `block_words` 任意一词 → `event.should_call_llm(True)`，本条消息不进大模型
 - 不使用 `event.stop_event()`，不发送任何消息，其他插件不受影响
 - 大小写可配置，命中可选打印日志
+
+## 支持平台
+
+插件只改事件上的 `call_llm` 标志，与平台协议无关，因此声明支持 AstrBot 全部 19 个平台适配器：
+
+`aiocqhttp` · `qq_official` · `qq_official_webhook` · `telegram` · `wecom` · `wecom_ai_bot` · `lark` · `dingtalk` · `discord` · `slack` · `kook` · `vocechat` · `weixin_official_account` · `weixin_oc` · `satori` · `misskey` · `line` · `matrix` · `mattermost`
 
 ## 安装
 

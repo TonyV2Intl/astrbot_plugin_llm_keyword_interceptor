@@ -2,21 +2,27 @@ name: astrbot_plugin_llm_keyword_interceptor
 display_name: LLM 调用关键词拦截
 desc: 消息命中自定义关键词时，阻止 AstrBot 默认的 LLM 请求，同时不终止事件传播，其他插件仍可正常响应同一条消息。
 short_desc: 命中关键词只挡住 AI，不影响其他插件。
-version: 1.0.0
+version: 1.1.0
 author: TonyV2Intl
 repo: https://github.com/TonyV2Intl/astrbot_plugin_llm_keyword_interceptor
 astrbot_version: ">=4.0.0,<5"
 support_platforms:
   - aiocqhttp
   - qq_official
+  - qq_official_webhook
   - telegram
+  - wecom
+  - wecom_ai_bot
+  - lark
+  - dingtalk
   - discord
   - slack
   - kook
-  - wecom
-  - lark
-  - dingtalk
+  - vocechat
   - weixin_official_account
+  - weixin_oc
   - satori
   - misskey
   - line
+  - matrix
+  - mattermost
