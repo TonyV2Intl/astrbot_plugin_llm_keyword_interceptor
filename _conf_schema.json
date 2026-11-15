@@ -2,15 +2,15 @@
   "block_words": {
     "description": "拦截关键词列表",
     "type": "list",
-    "default": ["/路线", "mtr", "机器人闭嘴"],
-    "hint": "消息文本包含其中任意一个词时，本条消息不会交给大模型；其他插件（如处理 /路线 指令的插件）仍可正常响应。",
+    "default": ["机器人闭嘴", "/群内其他bot的指令"],
+    "hint": "消息文本包含其中任意一个词时，本条消息不会交给大模型；其他插件仍可正常响应。",
     "obvious_hint": true
   },
   "case_sensitive": {
     "description": "区分大小写",
     "type": "bool",
     "default": false,
-    "hint": "关闭时 mtr、MTR、Mtr 都会命中；开启后只有完全一致的大小写才命中。"
+    "hint": "关闭时 hello、HELLO、Hello 都会命中；开启后只有完全一致的大小写才命中。"
   },
   "log_hit": {
     "description": "命中时输出日志",

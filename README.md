@@ -1,9 +1,9 @@
-# astrbot_plugin_llm_keyword_interceptor · LLM 关键词拦截
+# astrbot_plugin_llm_keyword_interceptor · LLM 调用关键词拦截
 
 [![AstrBot](https://img.shields.io/badge/AstrBot-%E2%89%A54.0-5B6CFF)](https://github.com/AstrBotDevs/AstrBot)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-消息命中关键词时，只掐断 AstrBot 默认的 LLM 调用，**不终止事件**。同一个 `/路线` 指令，AI 不会插嘴，指令插件照常工作。
+消息命中关键词时，只掐断 AstrBot 默认的 LLM 调用，**不终止事件**。有人发「机器人闭嘴」，AI 不接话，其他插件照常工作。
 
 ## 功能
 
@@ -35,9 +35,11 @@ git clone https://github.com/TonyV2Intl/astrbot_plugin_llm_keyword_interceptor.g
 
 | 配置项 | 类型 | 默认值 | 说明 |
 |---|---|---|---|
-| `block_words` | list | `["/路线","mtr","机器人闭嘴"]` | 拦截关键词，包含即命中 |
+| `block_words` | list | `["机器人闭嘴","/群内其他bot的指令"]` | 拦截关键词，包含即命中 |
 | `case_sensitive` | bool | `false` | 是否区分大小写 |
 | `log_hit` | bool | `true` | 命中时打印日志 |
+
+> 默认第二项 `/群内其他bot的指令` 是占位示例，演示「拦截群里其他机器人的指令」这类场景，请替换成你实际要拦的词。
 
 ## 实现要点
 
@@ -100,9 +102,9 @@ astrbot_plugin_llm_keyword_interceptor/
 
 ## 验证
 
-1. 私聊发送含关键词的内容，例如 `mtr 怎么去中环` → 机器人不回复，日志出现：
-   `命中拦截词 [mtr]，已禁止本条消息的默认 LLM 请求（事件继续传播）。`
-2. 群里 @机器人 发送 `/路线 A 到 B` → 指令插件正常返回结果，且大模型没有额外回复
+1. 私聊发送 `机器人闭嘴` → 机器人不回复，日志出现：
+   `命中拦截词 [机器人闭嘴]，已禁止本条消息的默认 LLM 请求（事件继续传播）。`
+2. 群里 @机器人 发送 `/群内其他bot的指令` → 对应插件正常返回结果，且大模型没有额外回复
 3. 发送不含关键词的普通消息 → AI 正常回复
 
 ## 常见问题
